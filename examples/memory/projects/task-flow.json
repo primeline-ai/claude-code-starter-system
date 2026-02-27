@@ -1,0 +1,82 @@
+{
+  "name": "TaskFlow",
+  "phase": "building",
+  "goals": [
+    "Ship MVP with auth, task CRUD, and team invites",
+    "Deploy to Vercel with Supabase backend",
+    "Get 10 beta users by end of March"
+  ],
+  "progress": [
+    {
+      "date": "2026-02-20",
+      "action": "Set up Next.js project with Supabase auth",
+      "result": "Login and signup working, Google OAuth configured",
+      "next": "Build task CRUD API routes"
+    },
+    {
+      "date": "2026-02-21",
+      "action": "Built task CRUD API routes and database schema",
+      "result": "Create, read, update, delete all working. RLS policies set.",
+      "next": "Build the task list UI"
+    },
+    {
+      "date": "2026-02-22",
+      "action": "Built task list UI with drag-and-drop reordering",
+      "result": "Kanban board working but slow on 100+ tasks",
+      "next": "Optimize rendering, add virtual scrolling"
+    },
+    {
+      "date": "2026-02-23",
+      "action": "Fixed performance - virtualized task list, added pagination",
+      "result": "Smooth scrolling even with 500 tasks. Load time under 200ms.",
+      "next": "Add team invite system"
+    },
+    {
+      "date": "2026-02-24",
+      "action": "Built team invite flow - email invites with magic links",
+      "result": "Invites send and accept correctly. Role-based access working.",
+      "next": "Add real-time task updates via Supabase subscriptions"
+    },
+    {
+      "date": "2026-02-25",
+      "action": "Added real-time subscriptions for task updates",
+      "result": "Changes from one user show instantly for all team members",
+      "next": "Write tests for API routes before deploying"
+    },
+    {
+      "date": "2026-02-26",
+      "action": "Wrote API route tests - 14 tests covering all CRUD + auth + RLS",
+      "result": "All passing. Found and fixed a bug where deleted tasks were still visible to non-owners.",
+      "next": "Deploy to Vercel staging"
+    },
+    {
+      "date": "2026-02-27",
+      "action": "Deployed to Vercel staging, configured Supabase production project",
+      "result": "Staging live. Auth works. One issue: magic links redirect to localhost in staging.",
+      "next": "Fix magic link redirect URL, then deploy to production"
+    }
+  ],
+  "failures": [
+    {
+      "date": "2026-02-22",
+      "what": "Drag-and-drop caused full re-render of 200+ task cards",
+      "why": "Each card was reading from the global state on every position change",
+      "learned": "Memoize card components and use local state for drag position, sync to global only on drop"
+    },
+    {
+      "date": "2026-02-24",
+      "what": "RLS policy allowed team members to delete tasks they did not own",
+      "why": "Policy checked team membership but not task ownership",
+      "learned": "Always test RLS with multiple user roles - owner, member, and outsider"
+    },
+    {
+      "date": "2026-02-27",
+      "what": "Magic links in emails redirect to localhost:3000 instead of staging URL",
+      "why": "Supabase site URL was still set to localhost in the dashboard",
+      "learned": "Add Supabase site URL to deployment checklist - it does not auto-detect from Vercel"
+    }
+  ],
+  "blockers": [
+    "Magic link redirect URL needs fixing in Supabase dashboard before production deploy"
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "name": "claude-code-starter-system",
+  "version": "1.1.0",
+  "description": "A complete session management system for Claude Code. Memory persistence, session handoffs, context awareness, and delegation basics - extracted from a 650-node production AI system.",
+  "author": {
+    "name": "Robin (PrimeLine)",
+    "url": "https://primeline.cc"
+  },
+  "homepage": "https://primeline.cc",
+  "license": "MIT",
+  "keywords": ["session-management", "memory", "handoff", "delegation", "productivity"]
+}
