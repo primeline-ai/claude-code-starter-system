@@ -207,6 +207,38 @@ The plugin will coexist with your existing setup. The `memory/` subdirectory it 
 
 ---
 
+## The Ecosystem
+
+This starter system is the foundation. Each tier works independently - no hard dependencies.
+
+```
+You're here          You want this            Install this
+-----------          -------------            ------------
+Raw Claude Code  ->  Session memory       ->  Starter System (free) <- you are here
+                 ->  Workflow skills      ->  + Skills Bundle (free)
+                 ->  Deep planning        ->  + UPF (free)
+                 ->  AI-powered system    ->  + Course (paid)
+```
+
+| Component | What It Does | Link |
+|-----------|-------------|------|
+| **Starter System** | Session memory, handoffs, context awareness | You're reading it |
+| **Skills Bundle** | 5 workflow skills: debugging, delegation, planning, code review, config architecture | [GitHub](https://github.com/primeline-ai/primeline-skills) |
+| **UPF** | Universal Planning Framework with deep multi-stage planning | [GitHub](https://github.com/primeline-ai/universal-planning-framework) |
+| **Course** | Kairn + Synapse: AI-powered memory and knowledge graphs | [primeline.cc](https://primeline.cc) |
+
+### How They Work Together
+
+The Skills Bundle references Starter System commands with "if available" language:
+
+- **Debugging** skill uses `/remember` to log known failures
+- **Plan & Execute** skill uses `/handoff` to save plan progress between sessions
+- **All skills** use `/context-stats` to manage context budget
+
+If the Skills Bundle isn't installed, the Starter System works perfectly on its own. If it is installed, the skills automatically leverage your memory and handoff infrastructure.
+
+---
+
 ## Built By
 
 Extracted from a production AI system powering 4 active projects across 110+ sessions. The patterns here are the ones that proved durable in daily use: the ones that survived context compactions, model updates, and weeks of iteration.
