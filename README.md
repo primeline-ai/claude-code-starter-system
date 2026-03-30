@@ -1,5 +1,8 @@
 # Claude Code Starter System
 
+
+![claude-code-starter-system](assets/hero.png)
+
 **Build Systems, Not Sessions**
 
 ---
