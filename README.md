@@ -53,15 +53,29 @@ claude --plugin-dir /path/to/claude-code-starter-system
 
 ### Permanent Install
 
-To load the plugin automatically in every session, add it to your Claude Code settings:
+Clone it into your Claude Code skills directory. Anything there loads automatically in
+every session:
 
-```json
-{
-  "pluginDirectories": ["/path/to/claude-code-starter-system"]
-}
+```bash
+git clone https://github.com/primeline-ai/claude-code-starter-system.git \
+  ~/.claude/skills/claude-code-starter-system
 ```
 
-Or install via the marketplace once listed there.
+Prefer to keep the repo somewhere else? Symlink it instead:
+
+```bash
+ln -s /path/to/claude-code-starter-system ~/.claude/skills/claude-code-starter-system
+```
+
+Confirm it loaded:
+
+```bash
+claude plugin list
+# claude-code-starter-system@skills-dir   Version: 1.1.0   Status: ✔ loaded
+```
+
+If `~/.claude/skills/` did not exist before you cloned, restart Claude Code once so it
+starts watching the new directory.
 
 Once loaded:
 
